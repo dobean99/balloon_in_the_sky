@@ -1,3 +1,4 @@
+import 'package:balloon_in_the_sky/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
 import 'custom_theme.dart';
@@ -41,7 +42,7 @@ class AppTheme {
     brightness: Brightness.dark,
 
     /// Primary Color
-    primaryColor: const Color(0xFF232323),
+    primaryColor: AppColors.primaryColor,
 
     /// Scaffold and Background color
     scaffoldBackgroundColor: const Color(0xff161616),

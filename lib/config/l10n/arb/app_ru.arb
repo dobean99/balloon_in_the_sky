@@ -1,0 +1,11 @@
+{
+    "@@locale": "ru",
+    "appName": "Balloon in the sky",
+    "@appName": {
+    "description": "The application name"
+  },
+  "play": "Играть",
+  "@play": {
+    "description": "Играть"
+  }
+}
