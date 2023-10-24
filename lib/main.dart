@@ -1,7 +1,7 @@
 import 'package:balloon_in_the_sky/config/config.dart';
 import 'package:balloon_in_the_sky/config/l10n/l10n.dart';
+import 'package:balloon_in_the_sky/features/menu_screen/menu_screen.dart';
 import 'package:flutter/material.dart';
-import 'features/loading_screen/loading_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: AppTheme.darkTheme,
-      home: const LoadingScreen(),
+      home: const MenuScreen(),
       onGenerateTitle: (context) => context.l10n!.appName,
       localizationsDelegates: const [
         AppLocalizations.delegate,
