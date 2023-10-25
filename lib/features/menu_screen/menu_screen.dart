@@ -32,80 +32,70 @@ class MenuScreen extends StatelessWidget {
       ),
       child: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            const SizedBox(
+              height: 100.0,
+            ),
             Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(
-                  height: 100.0,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    GradientStrokeText(
-                        text: context.l10n!.balloonIn,
-                        gradient: AppColors.blackToGrey),
-                    GradientStrokeText(
-                        text: context.l10n!.theSky,
-                        gradient: AppColors.blackToGrey),
-                  ],
-                ),
-                const SizedBox(
-                  height: 60.0,
-                ),
-                RoundedGradientStrokeButton(
-                  child: Text(
-                    context.l10n!.play.toUpperCase(),
-                    style: const TextStyle(
-                        fontSize: 24, color: AppColors.whiteColor),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const GameScreen()),
-                    );
-                  },
-                ),
-                const SizedBox(
-                  height: 25.0,
-                ),
-                RoundedGradientStrokeButton(
-                  child: Text(
-                    context.l10n!.theme.toUpperCase(),
-                    style: const TextStyle(
-                        fontSize: 24, color: AppColors.whiteColor),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const ThemeScreen()),
-                    );
-                  },
-                ),
-                const SizedBox(
-                  height: 25.0,
-                ),
-                RoundedGradientStrokeButton(
-                  child: Text(
-                    context.l10n!.settings.toUpperCase(),
-                    style: const TextStyle(
-                        fontSize: 24, color: AppColors.whiteColor),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SettingsScreen()),
-                    );
-                  },
-                ),
-                // const SizedBox(
-                //   height: 25.0,
-                // ),
+                GradientStrokeText(
+                    text: context.l10n!.balloonIn,
+                    gradient: AppColors.blackToGrey),
+                GradientStrokeText(
+                    text: context.l10n!.theSky,
+                    gradient: AppColors.blackToGrey),
               ],
+            ),
+            const SizedBox(
+              height: 60.0,
+            ),
+            RoundedGradientStrokeButton(
+              child: Text(
+                context.l10n!.play.toUpperCase(),
+                style:
+                    const TextStyle(fontSize: 24, color: AppColors.whiteColor),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const GameScreen()),
+                );
+              },
+            ),
+            const SizedBox(
+              height: 25.0,
+            ),
+            RoundedGradientStrokeButton(
+              child: Text(
+                context.l10n!.theme.toUpperCase(),
+                style:
+                    const TextStyle(fontSize: 24, color: AppColors.whiteColor),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ThemeScreen()),
+                );
+              },
+            ),
+            const SizedBox(
+              height: 25.0,
+            ),
+            RoundedGradientStrokeButton(
+              child: Text(
+                context.l10n!.settings.toUpperCase(),
+                style:
+                    const TextStyle(fontSize: 24, color: AppColors.whiteColor),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SettingsScreen()),
+                );
+              },
             ),
           ],
         ),
