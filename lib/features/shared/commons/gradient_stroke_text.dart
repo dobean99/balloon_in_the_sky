@@ -1,3 +1,4 @@
+import 'package:balloon_in_the_sky/core/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class GradientStrokeText extends StatelessWidget {
@@ -18,14 +19,12 @@ class GradientStrokeText extends StatelessWidget {
       children: [
         Text(
           text,
-          style: TextStyle(
-            fontSize: 40,
-            fontWeight: FontWeight.bold,
-            foreground: Paint()
-              ..style = PaintingStyle.stroke
-              ..strokeWidth = strokeWidth ?? 8
-              ..color = Colors.white,
-          ),
+          style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                foreground: Paint()
+                  ..style = PaintingStyle.stroke
+                  ..strokeWidth = strokeWidth ?? 8
+                  ..color = AppColors.whiteColor,
+              ),
         ),
         ShaderMask(
           shaderCallback: (bounds) {
@@ -33,13 +32,7 @@ class GradientStrokeText extends StatelessWidget {
               Rect.fromLTWH(0, 0, bounds.width, bounds.height),
             );
           },
-          child: Text(
-            text,
-            style: const TextStyle(
-              fontSize: 40,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          child: Text(text, style: Theme.of(context).textTheme.displayLarge),
         ),
       ],
     );

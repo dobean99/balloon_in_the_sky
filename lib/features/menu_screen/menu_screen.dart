@@ -1,9 +1,9 @@
 import 'package:balloon_in_the_sky/config/l10n/l10n.dart';
 import 'package:balloon_in_the_sky/core/constants/app_colors.dart';
+import 'package:balloon_in_the_sky/core/constants/app_constants.dart';
 import 'package:balloon_in_the_sky/features/game_screen/game_screen.dart';
 import 'package:balloon_in_the_sky/features/settings_screen/settings_screen.dart';
 import 'package:balloon_in_the_sky/features/shared/commons/commons.dart';
-import 'package:balloon_in_the_sky/features/shared/commons/rounded_gradient_stroke_button.dart';
 import 'package:balloon_in_the_sky/features/statistics_screen/statistics_screen.dart';
 import 'package:balloon_in_the_sky/features/theme_screen/theme_screen.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +20,7 @@ class MenuScreen extends StatelessWidget {
           isCircleButton: true,
           child: const Icon(
             Icons.stacked_bar_chart,
-            size: 25,
+            size: AppConstants.statisticsIconSize,
           ),
           onPressed: () {
             Navigator.push(
@@ -54,8 +54,7 @@ class MenuScreen extends StatelessWidget {
             RoundedGradientStrokeButton(
               child: Text(
                 context.l10n!.play.toUpperCase(),
-                style:
-                    const TextStyle(fontSize: 24, color: AppColors.whiteColor),
+                style: Theme.of(context).textTheme.bodyLarge,
               ),
               onPressed: () {
                 Navigator.push(
@@ -70,8 +69,7 @@ class MenuScreen extends StatelessWidget {
             RoundedGradientStrokeButton(
               child: Text(
                 context.l10n!.theme.toUpperCase(),
-                style:
-                    const TextStyle(fontSize: 24, color: AppColors.whiteColor),
+                style: Theme.of(context).textTheme.bodyLarge,
               ),
               onPressed: () {
                 Navigator.push(
@@ -86,8 +84,7 @@ class MenuScreen extends StatelessWidget {
             RoundedGradientStrokeButton(
               child: Text(
                 context.l10n!.settings.toUpperCase(),
-                style:
-                    const TextStyle(fontSize: 24, color: AppColors.whiteColor),
+                style: Theme.of(context).textTheme.bodyLarge,
               ),
               onPressed: () {
                 Navigator.push(
