@@ -39,20 +39,20 @@ class AppTheme {
   static final ThemeData darkTheme = ThemeData(
     fontFamily: "ObelixPro",
 
-    textTheme: TextTheme(
-      displayLarge: const TextStyle(
+    textTheme: const TextTheme(
+      displayLarge: TextStyle(
         fontSize: AppConstants.titleFontSize,
         color: AppColors.whiteColor,
       ),
-      bodyLarge: const TextStyle(
+      bodyLarge: TextStyle(
         fontSize: AppConstants.bigButtonFontSize,
         color: AppColors.whiteColor,
       ),
-      bodyMedium: const TextStyle(
+      bodyMedium: TextStyle(
         fontSize: AppConstants.mediumFontSize,
         color: AppColors.whiteColor,
       ),
-      bodySmall: const TextStyle(
+      bodySmall: TextStyle(
         fontSize: AppConstants.smallFontSize,
         color: AppColors.whiteColor,
       ),

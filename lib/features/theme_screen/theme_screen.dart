@@ -41,7 +41,7 @@ class ThemeScreen extends StatelessWidget {
           RoundedGradientStrokeButton(
             child: Text(
               context.l10n!.select.toUpperCase(),
-              style: const TextStyle(fontSize: 20, color: AppColors.whiteColor),
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
             onPressed: () {},
           )
