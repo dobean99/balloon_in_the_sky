@@ -1,4 +1,4 @@
-import 'package:balloon_in_the_sky/features/game_screen/sprites/my_game.dart';
+import 'package:balloon_in_the_sky/features/game_screen/sprites/balloon_in_the_sky.dart';
 import 'package:balloon_in_the_sky/features/shared/commons/commons.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +11,7 @@ class GameScreen extends StatelessWidget {
     return BaseLayout(
       child: Center(
         child: GameWidget(
-          game: MyGame(),
+          game: BalloonInTheSky(),
         ),
       ),
     );
