@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:balloon_in_the_sky/features/game_screen/game_screen.dart';
 import 'package:balloon_in_the_sky/features/game_screen/sprites/balloon.dart';
 import 'package:flame/game.dart';
+import 'package:flame_audio/flame_audio.dart';
 
 class BalloonInTheSky extends FlameGame {
   int totalPoint = 0;
@@ -14,6 +15,11 @@ class BalloonInTheSky extends FlameGame {
     // add(background);
     spawnBalloon();
     overlays.add(Score.id);
+    startBgmMusic();
+      }
+ void startBgmMusic() {
+    FlameAudio.bgm.initialize();
+    FlameAudio.bgm.play('bg_audio.mp3');
   }
 
   void addBalloon(
