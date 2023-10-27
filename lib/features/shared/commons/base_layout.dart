@@ -1,4 +1,5 @@
 import 'package:balloon_in_the_sky/config/config.dart';
+import 'package:balloon_in_the_sky/core/constants/app_constants.dart';
 import 'package:balloon_in_the_sky/features/menu_screen/menu_screen.dart';
 import 'package:balloon_in_the_sky/features/shared/commons/rounded_gradient_stroke_button.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,7 @@ class BaseLayout extends StatelessWidget {
                       isCircleButton: true,
                       child: const Icon(
                         Icons.home_filled,
-                        size: 40,
+                        size: AppConstants.homeIconSize,
                       ),
                       onPressed: () {
                         Navigator.push(

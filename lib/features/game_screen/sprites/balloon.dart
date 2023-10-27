@@ -1,16 +1,19 @@
 import 'package:balloon_in_the_sky/config/config.dart';
+import 'package:balloon_in_the_sky/features/game_screen/sprites/balloon_in_the_sky.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 
-class Balloon extends SpriteComponent with TapCallbacks {
+class Balloon extends SpriteComponent
+    with HasGameRef<BalloonInTheSky>, TapCallbacks {
   final double speed;
-  final double balloonSize;
+  final Vector2 balloonSize;
   final BalloonColor balloonColor;
 
   Balloon(
       {required this.speed,
       required this.balloonSize,
-      required this.balloonColor});
+      required this.balloonColor})
+      : super(scale: balloonSize);
   @override
   Future<void> onLoad() async {
     sprite = await Sprite.load(getBalloonColor(balloonColor));
@@ -19,17 +22,23 @@ class Balloon extends SpriteComponent with TapCallbacks {
   @override
   void update(double dt) {
     y = y - speed;
+    if (position.y < -100) {
+      removeFromParent();
+    }
     super.update(dt);
   }
 
   @override
-  void onTapDown(TapDownEvent event) {
+  Future<void> onTapDown(TapDownEvent event) async {
     removeFromParent();
     if (!event.handled) {
       final touchPoint = event.canvasPosition;
-      print('touchPoint $touchPoint');
+      final balloonBurst = BalloonBurst(touchPoint, balloonSize, balloonColor);
+      gameRef.add(balloonBurst);
+      gameRef.totalPoint += 1;
+      await Future.delayed(const Duration(milliseconds: 100));
+      gameRef.remove(balloonBurst);
     }
-    print('tap on balloon');
     event.handled = true;
   }
 
@@ -43,21 +52,39 @@ class Balloon extends SpriteComponent with TapCallbacks {
         return PngAssets.whiteBalloon;
     }
   }
-
-  String getBalloonBurstColor(BalloonColor balloonColor) {
-    switch (balloonColor) {
-      case BalloonColor.blueBalloon:
-        return PngAssets.blueBurstBalloon;
-      case BalloonColor.redBalloon:
-        return PngAssets.blueBurstBalloon;
-      case BalloonColor.whiteBalloon:
-        return PngAssets.blueBurstBalloon;
-    }
-  }
 }
 
 enum BalloonColor {
   blueBalloon,
   redBalloon,
   whiteBalloon,
+}
+
+class BalloonBurst extends SpriteComponent {
+  final Vector2 balloonSize;
+  final BalloonColor balloonColor;
+
+  BalloonBurst(Vector2 position, this.balloonSize, this.balloonColor)
+      : super(
+          position: position,
+          anchor: Anchor.center,
+          scale: balloonSize,
+        );
+
+  @override
+  Future<void> onLoad() async {
+    sprite = await Sprite.load(getBalloonBurstColor(balloonColor));
+    super.onLoad();
+  }
+
+  String getBalloonBurstColor(BalloonColor balloonColor) {
+    switch (balloonColor) {
+      case BalloonColor.blueBalloon:
+        return PngAssets.blueBurstBalloon;
+      case BalloonColor.redBalloon:
+        return PngAssets.redBurstBalloon;
+      case BalloonColor.whiteBalloon:
+        return PngAssets.whiteBurstBalloon;
+    }
+  }
 }

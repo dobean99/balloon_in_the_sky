@@ -1,4 +1,5 @@
 import 'package:balloon_in_the_sky/core/constants/app_colors.dart';
+import 'package:balloon_in_the_sky/core/constants/app_constants.dart';
 import 'package:flutter/material.dart';
 
 import 'custom_theme.dart';
@@ -37,6 +38,25 @@ class AppTheme {
 //dark theme
   static final ThemeData darkTheme = ThemeData(
     fontFamily: "ObelixPro",
+
+    textTheme: const TextTheme(
+      displayLarge: TextStyle(
+        fontSize: AppConstants.titleFontSize,
+        color: AppColors.whiteColor,
+      ),
+      bodyLarge: TextStyle(
+        fontSize: AppConstants.bigButtonFontSize,
+        color: AppColors.whiteColor,
+      ),
+      bodyMedium: TextStyle(
+        fontSize: AppConstants.mediumFontSize,
+        color: AppColors.whiteColor,
+      ),
+      bodySmall: TextStyle(
+        fontSize: AppConstants.smallFontSize,
+        color: AppColors.whiteColor,
+      ),
+    ),
 
     /// Brightness
     brightness: Brightness.dark,

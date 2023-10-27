@@ -37,8 +37,7 @@ class SettingsScreen extends StatelessWidget {
                         children: [
                           Text(
                             context.l10n!.sound.toUpperCase(),
-                            style: const TextStyle(
-                                fontSize: 20, color: AppColors.whiteColor),
+                            style: Theme.of(context).textTheme.bodyMedium,
                           ),
                           Row(
                             children: [
@@ -46,18 +45,14 @@ class SettingsScreen extends StatelessWidget {
                                 width: 70,
                                 child: Text(
                                   context.l10n!.on.toUpperCase(),
-                                  style: const TextStyle(
-                                      fontSize: 16,
-                                      color: AppColors.whiteColor),
+                                  style: Theme.of(context).textTheme.bodySmall,
                                 ),
                               ),
                               RoundedGradientStrokeButton(
                                 width: 70,
                                 child: Text(
                                   context.l10n!.off.toUpperCase(),
-                                  style: const TextStyle(
-                                      fontSize: 16,
-                                      color: AppColors.whiteColor),
+                                  style: Theme.of(context).textTheme.bodySmall,
                                 ),
                               )
                             ],
@@ -80,8 +75,7 @@ class SettingsScreen extends StatelessWidget {
                         children: [
                           Text(
                             context.l10n!.vibration.toUpperCase(),
-                            style: const TextStyle(
-                                fontSize: 20, color: AppColors.whiteColor),
+                            style: Theme.of(context).textTheme.bodyMedium,
                           ),
                           Row(
                             children: [
@@ -89,18 +83,14 @@ class SettingsScreen extends StatelessWidget {
                                 width: 70,
                                 child: Text(
                                   context.l10n!.on.toUpperCase(),
-                                  style: const TextStyle(
-                                      fontSize: 16,
-                                      color: AppColors.whiteColor),
+                                  style: Theme.of(context).textTheme.bodySmall,
                                 ),
                               ),
                               RoundedGradientStrokeButton(
                                 width: 70,
                                 child: Text(
                                   context.l10n!.off.toUpperCase(),
-                                  style: const TextStyle(
-                                      fontSize: 16,
-                                      color: AppColors.whiteColor),
+                                  style: Theme.of(context).textTheme.bodySmall,
                                 ),
                               )
                             ],
@@ -123,15 +113,13 @@ class SettingsScreen extends StatelessWidget {
                         children: [
                           Text(
                             context.l10n!.language.toUpperCase(),
-                            style: const TextStyle(
-                                fontSize: 20, color: AppColors.whiteColor),
+                            style: Theme.of(context).textTheme.bodyMedium,
                           ),
                           RoundedGradientStrokeButton(
                             width: 150,
                             child: Text(
                               context.l10n!.english.toUpperCase(),
-                              style: const TextStyle(
-                                  fontSize: 16, color: AppColors.whiteColor),
+                              style: Theme.of(context).textTheme.bodySmall,
                             ),
                           ),
                         ],
