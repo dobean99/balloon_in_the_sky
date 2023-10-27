@@ -6,13 +6,14 @@ import 'package:flame/events.dart';
 class Balloon extends SpriteComponent
     with HasGameRef<BalloonInTheSky>, TapCallbacks {
   final double speed;
-  final double balloonSize;
+  final Vector2 balloonSize;
   final BalloonColor balloonColor;
 
   Balloon(
       {required this.speed,
       required this.balloonSize,
-      required this.balloonColor});
+      required this.balloonColor})
+      : super(scale: balloonSize);
   @override
   Future<void> onLoad() async {
     sprite = await Sprite.load(getBalloonColor(balloonColor));
@@ -60,13 +61,14 @@ enum BalloonColor {
 }
 
 class BalloonBurst extends SpriteComponent {
-  final double balloonSize;
+  final Vector2 balloonSize;
   final BalloonColor balloonColor;
 
   BalloonBurst(Vector2 position, this.balloonSize, this.balloonColor)
       : super(
           position: position,
           anchor: Anchor.center,
+          scale: balloonSize,
         );
 
   @override

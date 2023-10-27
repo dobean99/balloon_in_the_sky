@@ -1,15 +1,10 @@
 import 'dart:math';
+import 'package:balloon_in_the_sky/features/game_screen/game_screen.dart';
 import 'package:balloon_in_the_sky/features/game_screen/sprites/balloon.dart';
-import 'package:flame/components.dart';
 import 'package:flame/game.dart';
-import 'package:flutter/material.dart';
 
 class BalloonInTheSky extends FlameGame {
-  late int totalPoint = 0;
-  late TextComponent playScore;
-
-  @override
-  bool debugMode = true;
+  int totalPoint = 0;
 
   @override
   Future<void> onLoad() async {
@@ -17,14 +12,16 @@ class BalloonInTheSky extends FlameGame {
     //   ..sprite = await loadSprite(PngAssets.background)
     //   ..size = size;
     // add(background);
-    createScoreText();
     spawnBalloon();
+    overlays.add(Score.id);
   }
 
   void addBalloon(
       BalloonColor balloonColor, double positionX, double speed) async {
+    double randomScale = Random().nextDouble() * 0.5 + 0.5;
+    final scale = Vector2(randomScale, randomScale);
     final component =
-        Balloon(speed: speed, balloonSize: 20, balloonColor: balloonColor);
+        Balloon(speed: speed, balloonSize: scale, balloonColor: balloonColor);
     component.position = Vector2(positionX, size.y);
     await add(component);
   }
@@ -44,23 +41,12 @@ class BalloonInTheSky extends FlameGame {
     }
   }
 
-  void createScoreText() {
-    TextPaint textPaint = TextPaint(
-      style: const TextStyle(
-        fontSize: 48.0,
-      ),
-    );
-    playScore = TextComponent(
-      text: totalPoint.toString(),
-      textRenderer: textPaint,
-      position: Vector2(size.x / 2, 40),
-    );
-    add(playScore);
-  }
-
   @override
   void update(double dt) {
-    playScore.text = totalPoint.toString();
+    if (overlays.isActive(Score.id)) {
+      overlays.remove(Score.id);
+      overlays.add(Score.id);
+    }
     super.update(dt);
   }
 }
