@@ -4,12 +4,21 @@ import 'package:balloon_in_the_sky/features/game_screen/game_screen.dart';
 import 'package:balloon_in_the_sky/features/loading_screen/loading_screen.dart';
 import 'package:balloon_in_the_sky/features/menu_screen/menu_screen.dart';
 import 'package:balloon_in_the_sky/features/settings_screen/settings_screen.dart';
+import 'package:balloon_in_the_sky/features/theme_screen/theme_provider.dart';
 import 'package:balloon_in_the_sky/features/theme_screen/theme_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp( 
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ThemeProvider()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

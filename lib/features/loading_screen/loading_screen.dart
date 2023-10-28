@@ -47,7 +47,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
             );
           },
           size: 200.0,
-          duration: const Duration(seconds: 5),
+          duration: const Duration(seconds: 1),
         ),
       ),
     );
