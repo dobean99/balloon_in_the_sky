@@ -1,11 +1,12 @@
-import 'package:balloon_in_the_sky/config/config.dart';
 import 'package:balloon_in_the_sky/config/l10n/l10n.dart';
 import 'package:balloon_in_the_sky/core/constants/app_colors.dart';
 import 'package:balloon_in_the_sky/core/constants/app_constants.dart';
 import 'package:balloon_in_the_sky/features/menu_screen/menu_screen.dart';
 import 'package:balloon_in_the_sky/features/shared/commons/gradient_stroke_text.dart';
 import 'package:balloon_in_the_sky/features/shared/commons/rounded_gradient_stroke_button.dart';
+import 'package:balloon_in_the_sky/features/theme_screen/theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class BaseLayout extends StatelessWidget {
   const BaseLayout(
@@ -25,7 +26,9 @@ class BaseLayout extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(PngAssets.backgroundImage),
+            image: AssetImage(
+              context.watch<ThemeProvider>().backgroundImage,
+            ),
             fit: BoxFit.cover,
           ),
         ),
