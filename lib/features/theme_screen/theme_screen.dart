@@ -1,6 +1,7 @@
+import 'package:balloon_in_the_sky/config/assets/assets.dart';
 import 'package:balloon_in_the_sky/config/l10n/l10n.dart';
-import 'package:balloon_in_the_sky/core/constants/app_colors.dart';
 import 'package:balloon_in_the_sky/features/shared/shared.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class ThemeScreen extends StatelessWidget {
@@ -8,45 +9,64 @@ class ThemeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CarouselController carouselController = CarouselController();
+
+    final featuredImages = [
+      PngAssets.backgroundImage,
+      PngAssets.backgroundImage2,
+    ];
     return BaseLayout(
-        child: Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const SizedBox(
-            height: 90.0,
-          ),
-          GradientStrokeText(
-              text: context.l10n!.theme, gradient: AppColors.blackToGrey),
-          const SizedBox(
-            height: 90.0,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Icon(
-                Icons.arrow_back_ios,
-                size: 50,
-              ),
-              CustomBoxDecoration(),
-              Icon(
-                Icons.arrow_forward_ios,
-                size: 50,
-              )
-            ],
-          ),
-          const SizedBox(
-            height: 10.0,
-          ),
-          RoundedGradientStrokeButton(
-            child: Text(
-              context.l10n!.select.toUpperCase(),
-              style: Theme.of(context).textTheme.bodyMedium,
+      isLogoBackground: false,
+      headerText: context.l10n!.theme,
+      body: Center(
+        child: Column(
+          children: [
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                CarouselSlider(
+                  carouselController: carouselController,
+                  options: CarouselOptions(
+                    autoPlay: false,
+                  ),
+                  items: featuredImages.map((featuredImage) {
+                    return CustomBoxDecoration(background: featuredImage);
+                  }).toList(),
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: IconButton(
+                    onPressed: () {
+                      carouselController.previousPage();
+                    },
+                    icon: Icon(Icons.arrow_back),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: IconButton(
+                    onPressed: () {
+                      // Use the controller to change the current page
+                      carouselController.nextPage();
+                    },
+                    icon: Icon(Icons.arrow_forward),
+                  ),
+                ),
+              ],
             ),
-            onPressed: () {},
-          )
-        ],
+            const SizedBox(
+              height: 20,
+            ),
+            RoundedGradientStrokeButton(
+              child: Text(
+                context.l10n!.select.toUpperCase(),
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
+              onPressed: () {},
+            )
+          ],
+        ),
       ),
-    ));
+    );
   }
 }

@@ -1,46 +1,44 @@
-// import 'package:flutter/foundation.dart';
-// import 'package:flutter/material.dart';
-// import 'package:go_router/go_router.dart';
+import 'package:balloon_in_the_sky/features/loading_screen/loading_screen.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-// import '../../features/features.dart';
+class AppRouter {
+  static final GoRouter router = GoRouter(
+    debugLogDiagnostics: kDebugMode,
+    routes: [
+      GoRoute(
+        path: '/',
+        pageBuilder: (context, state) => MaterialPage(
+          key: state.pageKey,
+          child: const LoadingScreen(),
+        ),
+      ),
+    ],
+    errorPageBuilder: (context, state) => MaterialPage(
+      key: state.pageKey,
+      child: ErrorScreen(error: state.error),
+    ),
+    redirect: (context, state) {
+      return '/';
+    },
+  );
 
-// class AppRouter {
+  const AppRouter._();
+}
 
-//   static final GoRouter router = GoRouter(
-//     debugLogDiagnostics: kDebugMode,
-//     routes: [
-//       GoRoute(
-//         path: '/',
-//         pageBuilder: (context, state) => MaterialPage(
-//           key: state.pageKey,
-//           child: const LogInScreen(),
-//         ),
-//       ),
-//     ],
-//     errorPageBuilder: (context, state) => MaterialPage(
-//       key: state.pageKey,
-//       child: ErrorScreen(error: state.error),
-//     ),
-//     redirect: (context, state) {
-//       return '/';
-//     },
-//   );
+class ErrorScreen extends StatelessWidget {
+  final Exception? error;
 
-//   const AppRouter._();
-// }
+  const ErrorScreen({Key? key, this.error}) : super(key: key);
 
-// class ErrorScreen extends StatelessWidget {
-//   final Exception? error;
-
-//   const ErrorScreen({Key? key, this.error}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(leading: const CloseButton()),
-//       body: const Center(
-//         child: Text('Something went wrong!'),
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(leading: const CloseButton()),
+      body: const Center(
+        child: Text('Something went wrong!'),
+      ),
+    );
+  }
+}
