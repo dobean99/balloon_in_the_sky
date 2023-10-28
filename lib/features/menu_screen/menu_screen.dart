@@ -1,5 +1,4 @@
 import 'package:balloon_in_the_sky/config/l10n/l10n.dart';
-import 'package:balloon_in_the_sky/core/constants/app_colors.dart';
 import 'package:balloon_in_the_sky/core/constants/app_constants.dart';
 import 'package:balloon_in_the_sky/features/game_screen/game_screen.dart';
 import 'package:balloon_in_the_sky/features/settings_screen/settings_screen.dart';
@@ -30,72 +29,51 @@ class MenuScreen extends StatelessWidget {
           },
         ),
       ),
-      child: Center(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 100.0,
+      body: Column(
+        children: [
+          RoundedGradientStrokeButton(
+            child: Text(
+              context.l10n!.play.toUpperCase(),
+              style: Theme.of(context).textTheme.bodyLarge,
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GradientStrokeText(
-                    text: context.l10n!.balloonIn,
-                    gradient: AppColors.blackToGrey),
-                GradientStrokeText(
-                    text: context.l10n!.theSky,
-                    gradient: AppColors.blackToGrey),
-              ],
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => GameScreen()),
+              );
+            },
+          ),
+          const SizedBox(
+            height: 25.0,
+          ),
+          RoundedGradientStrokeButton(
+            child: Text(
+              context.l10n!.theme.toUpperCase(),
+              style: Theme.of(context).textTheme.bodyLarge,
             ),
-            const SizedBox(
-              height: 60.0,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ThemeScreen()),
+              );
+            },
+          ),
+          const SizedBox(
+            height: 25.0,
+          ),
+          RoundedGradientStrokeButton(
+            child: Text(
+              context.l10n!.settings.toUpperCase(),
+              style: Theme.of(context).textTheme.bodyLarge,
             ),
-            RoundedGradientStrokeButton(
-              child: Text(
-                context.l10n!.play.toUpperCase(),
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => GameScreen()),
-                );
-              },
-            ),
-            const SizedBox(
-              height: 25.0,
-            ),
-            RoundedGradientStrokeButton(
-              child: Text(
-                context.l10n!.theme.toUpperCase(),
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const ThemeScreen()),
-                );
-              },
-            ),
-            const SizedBox(
-              height: 25.0,
-            ),
-            RoundedGradientStrokeButton(
-              child: Text(
-                context.l10n!.settings.toUpperCase(),
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const SettingsScreen()),
-                );
-              },
-            ),
-          ],
-        ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SettingsScreen()),
+              );
+            },
+          ),
+        ],
       ),
     );
   }

@@ -1,11 +1,12 @@
-import 'package:balloon_in_the_sky/config/assets/png_assets.dart';
 import 'package:balloon_in_the_sky/core/constants/app_colors.dart';
 import 'package:balloon_in_the_sky/core/constants/app_constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomBoxDecoration extends StatelessWidget {
+  final String background;
   const CustomBoxDecoration({
     super.key,
+    required this.background,
   });
 
   @override
@@ -15,7 +16,7 @@ class CustomBoxDecoration extends StatelessWidget {
       height: AppConstants.themeBoxWidth,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(PngAssets.backgroundImage),
+          image: AssetImage(background),
           fit: BoxFit.cover,
         ),
         borderRadius: BorderRadius.circular(AppConstants.borderRadiusThemeBox),

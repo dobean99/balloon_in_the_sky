@@ -11,30 +11,28 @@ class GameScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BaseLayout(
-      child: GameWidget(
-        game: BalloonInTheSky(),
-        backgroundBuilder: (context) {
-          return Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(PngAssets.backgroundImage),
-                fit: BoxFit.cover,
-              ),
+    return GameWidget(
+      game: BalloonInTheSky(),
+      backgroundBuilder: (context) {
+        return Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(PngAssets.backgroundImage),
+              fit: BoxFit.cover,
             ),
+          ),
+        );
+      },
+      overlayBuilderMap: {
+        Score.id: (context, BalloonInTheSky gameRef) {
+          return Stack(
+            alignment: Alignment.center,
+            children: [
+              Positioned(top: 40, child: Score(gameRef: gameRef)),
+            ],
           );
         },
-        overlayBuilderMap: {
-          Score.id: (context, BalloonInTheSky gameRef) {
-            return Stack(
-              alignment: Alignment.center,
-              children: [
-                Positioned(top: 40, child: Score(gameRef: gameRef)),
-              ],
-            );
-          },
-        },
-      ),
+      },
     );
   }
 }

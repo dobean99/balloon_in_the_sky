@@ -2,6 +2,7 @@ class PngAssets {
   //get full path file name .png ==> example "assets/images/blue_ballon.png"
   static String get logo => 'logo'.png;
   static String get backgroundImage => 'background_image'.png;
+  static String get backgroundImage2 => 'background_image_2'.png;
 
 //get only file name .png ==> example "blue_ballon.png"
   static String get background => 'background_image'.src;
