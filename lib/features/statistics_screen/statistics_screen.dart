@@ -1,5 +1,5 @@
 import 'package:balloon_in_the_sky/config/l10n/l10n.dart';
-import 'package:balloon_in_the_sky/features/game_screen/sprites/balloon_in_the_sky.dart';
+import 'package:balloon_in_the_sky/features/game_screen/game/balloon_in_the_sky.dart';
 import 'package:balloon_in_the_sky/features/shared/shared.dart';
 import 'package:flutter/material.dart';
 

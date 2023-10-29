@@ -1,8 +1,15 @@
 import 'package:balloon_in_the_sky/config/config.dart';
-import 'package:balloon_in_the_sky/features/game_screen/sprites/balloon_in_the_sky.dart';
+import 'package:balloon_in_the_sky/features/game_screen/components/balloon_burst.dart';
+import 'package:balloon_in_the_sky/features/game_screen/game/balloon_in_the_sky.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:vibration/vibration.dart';
+
+enum BalloonColor {
+  blueBalloon,
+  redBalloon,
+  whiteBalloon,
+}
 
 class Balloon extends SpriteComponent
     with HasGameRef<BalloonInTheSky>, TapCallbacks {
@@ -52,41 +59,6 @@ class Balloon extends SpriteComponent
         return PngAssets.redBalloon;
       case BalloonColor.whiteBalloon:
         return PngAssets.whiteBalloon;
-    }
-  }
-}
-
-enum BalloonColor {
-  blueBalloon,
-  redBalloon,
-  whiteBalloon,
-}
-
-class BalloonBurst extends SpriteComponent {
-  final Vector2 balloonSize;
-  final BalloonColor balloonColor;
-
-  BalloonBurst(Vector2 position, this.balloonSize, this.balloonColor)
-      : super(
-          position: position,
-          anchor: Anchor.center,
-          scale: balloonSize,
-        );
-
-  @override
-  Future<void> onLoad() async {
-    sprite = await Sprite.load(getBalloonBurstColor(balloonColor));
-    super.onLoad();
-  }
-
-  String getBalloonBurstColor(BalloonColor balloonColor) {
-    switch (balloonColor) {
-      case BalloonColor.blueBalloon:
-        return PngAssets.blueBurstBalloon;
-      case BalloonColor.redBalloon:
-        return PngAssets.redBurstBalloon;
-      case BalloonColor.whiteBalloon:
-        return PngAssets.whiteBurstBalloon;
     }
   }
 }
