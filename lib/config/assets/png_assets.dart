@@ -3,6 +3,10 @@ class PngAssets {
   static String get logo => 'logo'.png;
   static String get backgroundImage => 'background_image'.png;
   static String get backgroundImage2 => 'background_image_2'.png;
+  static String get arrowLeftIcon => 'arrow_left_icon'.png;
+  static String get arrowRightIcon => 'arrow_right_icon'.png;
+  static String get homeIcon => 'home_icon'.png;
+  static String get statisticsIcon => 'statistics_icon'.png;
 
 //get only file name .png ==> example "blue_ballon.png"
   static String get background => 'background_image'.src;

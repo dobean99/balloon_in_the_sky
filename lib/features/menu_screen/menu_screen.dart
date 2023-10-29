@@ -1,3 +1,4 @@
+import 'package:balloon_in_the_sky/config/assets/png_assets.dart';
 import 'package:balloon_in_the_sky/config/l10n/l10n.dart';
 import 'package:balloon_in_the_sky/core/constants/app_constants.dart';
 import 'package:balloon_in_the_sky/features/game_screen/game_screen.dart';
@@ -17,10 +18,7 @@ class MenuScreen extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: 50),
         child: RoundedGradientStrokeButton(
           isCircleButton: true,
-          child: const Icon(
-            Icons.stacked_bar_chart,
-            size: AppConstants.statisticsIconSize,
-          ),
+          child: Image.asset(PngAssets.statisticsIcon),
           onPressed: () {
             Navigator.push(
               context,
