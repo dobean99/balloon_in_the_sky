@@ -1,3 +1,4 @@
+import 'package:balloon_in_the_sky/config/assets/assets.dart';
 import 'package:balloon_in_the_sky/config/l10n/l10n.dart';
 import 'package:balloon_in_the_sky/core/constants/app_colors.dart';
 import 'package:balloon_in_the_sky/core/constants/app_constants.dart';
@@ -70,10 +71,7 @@ class BaseLayout extends StatelessWidget {
                       padding: const EdgeInsets.only(bottom: 30.0),
                       child: RoundedGradientStrokeButton(
                         isCircleButton: true,
-                        child: const Icon(
-                          Icons.home_filled,
-                          size: AppConstants.homeIconSize,
-                        ),
+                        child: Image.asset(PngAssets.homeIcon),
                         onPressed: () {
                           Navigator.push(
                             context,

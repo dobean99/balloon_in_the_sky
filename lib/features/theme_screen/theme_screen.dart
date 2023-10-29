@@ -47,7 +47,8 @@ class ThemeScreen extends StatelessWidget {
                     onPressed: () {
                       carouselController.previousPage();
                     },
-                    icon: Icon(Icons.arrow_back),
+                    icon: Image.asset(PngAssets.arrowLeftIcon),
+                    iconSize: 100,
                   ),
                 ),
                 Align(
@@ -57,7 +58,8 @@ class ThemeScreen extends StatelessWidget {
                       // Use the controller to change the current page
                       carouselController.nextPage();
                     },
-                    icon: Icon(Icons.arrow_forward),
+                    icon: Image.asset(PngAssets.arrowRightIcon),
+                    iconSize: 100,
                   ),
                 ),
               ],
