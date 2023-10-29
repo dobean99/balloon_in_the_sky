@@ -1,7 +1,6 @@
-import 'package:balloon_in_the_sky/config/assets/png_assets.dart';
-import 'package:balloon_in_the_sky/core/constants/app_colors.dart';
-import 'package:balloon_in_the_sky/features/game_screen/sprites/balloon_in_the_sky.dart';
-import 'package:balloon_in_the_sky/features/shared/commons/commons.dart';
+import 'package:balloon_in_the_sky/features/game_screen/game/balloon_in_the_sky.dart';
+import 'package:balloon_in_the_sky/features/game_screen/overlays/home_button.dart';
+import 'package:balloon_in_the_sky/features/game_screen/overlays/score.dart';
 import 'package:balloon_in_the_sky/features/theme_screen/theme_provider.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
@@ -13,41 +12,34 @@ class GameScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GameWidget(
-      game: BalloonInTheSky(),
-      backgroundBuilder: (context) {
-        return Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(context.watch<ThemeProvider>().backgroundImage),
-              fit: BoxFit.cover,
+    return Scaffold(
+      body: GameWidget(
+        game: BalloonInTheSky(),
+        backgroundBuilder: (context) {
+          return Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image:
+                    AssetImage(context.watch<ThemeProvider>().backgroundImage),
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-        );
-      },
-      overlayBuilderMap: {
-        Score.id: (context, BalloonInTheSky gameRef) {
-          return Stack(
-            alignment: Alignment.center,
-            children: [
-              Positioned(top: 40, child: Score(gameRef: gameRef)),
-            ],
           );
         },
-      },
+        overlayBuilderMap: {
+          Score.id: (context, BalloonInTheSky gameRef) {
+            return Stack(
+              alignment: Alignment.center,
+              children: [
+                Positioned(top: 40, child: Score(gameRef: gameRef)),
+              ],
+            );
+          },
+          HomeButton.id: (context, BalloonInTheSky gameRef) {
+            return const HomeButton();
+          }
+        },
+      ),
     );
-  }
-}
-
-class Score extends StatelessWidget {
-  final BalloonInTheSky gameRef;
-  static const String id = 'Score';
-
-  const Score({super.key, required this.gameRef});
-
-  @override
-  Widget build(BuildContext context) {
-    return GradientStrokeText(
-        text: gameRef.totalPoint.toString(), gradient: AppColors.blackToGrey);
   }
 }

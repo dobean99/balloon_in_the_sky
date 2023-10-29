@@ -1,6 +1,7 @@
 import 'dart:math';
-import 'package:balloon_in_the_sky/features/game_screen/game_screen.dart';
-import 'package:balloon_in_the_sky/features/game_screen/sprites/balloon.dart';
+import 'package:balloon_in_the_sky/features/game_screen/components/balloon.dart';
+import 'package:balloon_in_the_sky/features/game_screen/overlays/home_button.dart';
+import 'package:balloon_in_the_sky/features/game_screen/overlays/score.dart';
 import 'package:flame/game.dart';
 
 class BalloonInTheSky extends FlameGame {
@@ -14,6 +15,7 @@ class BalloonInTheSky extends FlameGame {
     // add(background);
     spawnBalloon();
     overlays.add(Score.id);
+    overlays.add(HomeButton.id);
   }
 
   void addBalloon(
