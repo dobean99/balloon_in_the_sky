@@ -2,6 +2,7 @@ import 'package:balloon_in_the_sky/config/config.dart';
 import 'package:balloon_in_the_sky/features/game_screen/sprites/balloon_in_the_sky.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
+import 'package:vibration/vibration.dart';
 
 class Balloon extends SpriteComponent
     with HasGameRef<BalloonInTheSky>, TapCallbacks {
@@ -36,6 +37,7 @@ class Balloon extends SpriteComponent
       final balloonBurst = BalloonBurst(touchPoint, balloonSize, balloonColor);
       gameRef.add(balloonBurst);
       gameRef.totalPoint += 1;
+      Vibration.vibrate();
       await Future.delayed(const Duration(milliseconds: 100));
       gameRef.remove(balloonBurst);
     }

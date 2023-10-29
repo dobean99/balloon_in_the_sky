@@ -2,8 +2,10 @@ import 'package:balloon_in_the_sky/config/assets/png_assets.dart';
 import 'package:balloon_in_the_sky/core/constants/app_colors.dart';
 import 'package:balloon_in_the_sky/features/game_screen/sprites/balloon_in_the_sky.dart';
 import 'package:balloon_in_the_sky/features/shared/commons/commons.dart';
+import 'package:balloon_in_the_sky/features/theme_screen/theme_provider.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class GameScreen extends StatelessWidget {
   GameScreen({Key? key}) : super(key: key);
@@ -17,7 +19,7 @@ class GameScreen extends StatelessWidget {
         return Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(PngAssets.backgroundImage),
+              image: AssetImage(context.watch<ThemeProvider>().backgroundImage),
               fit: BoxFit.cover,
             ),
           ),
