@@ -30,6 +30,7 @@ class RoundedGradientStrokeButton extends StatelessWidget {
       opacity: isEnabled ? 1 : 0.5,
       child: Container(
         width: width ?? AppConstants.buttonMenuWidth,
+        height: height,
         padding: const EdgeInsets.symmetric(vertical: 10),
         decoration: isCircleButton
             ? BoxDecoration(
