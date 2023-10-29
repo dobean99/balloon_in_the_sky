@@ -11,4 +11,8 @@ class AppConstants {
   static const borderRadiusThemeBox = 20.0;
   static const statisticsIconSize = 25.0;
   static const homeIconSize = 40.0;
+
+  static const paddingResult = 30.0;
+  static const borderRadiusResult = 20.0;
+  static const widthContainerResult = 80.0;
 }
