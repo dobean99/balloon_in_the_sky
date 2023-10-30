@@ -15,4 +15,6 @@ class AppConstants {
   static const paddingResult = 30.0;
   static const borderRadiusResult = 20.0;
   static const widthContainerResult = 80.0;
+
+  static const borderRadiusDropdown = 10.0;
 }

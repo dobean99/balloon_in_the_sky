@@ -72,11 +72,8 @@ class BaseLayout extends StatelessWidget {
                         isCircleButton: true,
                         child: Image.asset(PngAssets.homeIcon),
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const MenuScreen()),
-                          );
+                          Navigator.popUntil(
+                              context, ModalRoute.withName('/MenuScreen'));
                         },
                       ),
                     ),
