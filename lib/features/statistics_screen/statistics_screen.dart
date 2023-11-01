@@ -2,30 +2,43 @@ import 'package:balloon_in_the_sky/config/assets/assets.dart';
 import 'package:balloon_in_the_sky/config/l10n/l10n.dart';
 import 'package:balloon_in_the_sky/core/constants/app_colors.dart';
 import 'package:balloon_in_the_sky/core/constants/app_constants.dart';
-import 'package:balloon_in_the_sky/features/game_screen/game/balloon_in_the_sky.dart';
 import 'package:balloon_in_the_sky/features/shared/shared.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class StatisticsScreen extends StatelessWidget {
+class StatisticsScreen extends StatefulWidget {
   const StatisticsScreen({super.key});
 
   @override
+  State<StatisticsScreen> createState() => _StatisticsScreenState();
+}
+
+class _StatisticsScreenState extends State<StatisticsScreen> {
+  late int blue = 0, red = 0, white = 0;
+
+  Future<void> loaData() async {
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    setState(() {
+      red = pref.getInt(AppConstants.redBalloon) ?? 0;
+      blue = pref.getInt(AppConstants.blueBalloon) ?? 0;
+      white = pref.getInt(AppConstants.whiteBalloon) ?? 0;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    BalloonInTheSky balloonInTheSky = BalloonInTheSky();
+    loaData();
     return BaseLayout(
       isLogoBackground: false,
       headerText: context.l10n!.statistics,
       body: Column(
         children: [
           CustomResultRow(
-              imageBallon: PngAssets.whiteBalloonBG,
-              numberBalloon: balloonInTheSky.totalPoint),
+              imageBallon: PngAssets.whiteBalloonBG, numberBalloon: white),
           CustomResultRow(
-              imageBallon: PngAssets.blueBalloonBG,
-              numberBalloon: balloonInTheSky.totalPoint),
+              imageBallon: PngAssets.blueBalloonBG, numberBalloon: blue),
           CustomResultRow(
-              imageBallon: PngAssets.redBalloonBG,
-              numberBalloon: balloonInTheSky.totalPoint),
+              imageBallon: PngAssets.redBalloonBG, numberBalloon: red),
         ],
       ),
     );

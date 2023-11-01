@@ -17,4 +17,8 @@ class AppConstants {
   static const widthContainerResult = 80.0;
 
   static const borderRadiusDropdown = 10.0;
+
+  static const blueBalloon = 'blueBalloon';
+  static const redBalloon = 'redBalloon';
+  static const whiteBalloon = 'whiteBalloon';
 }

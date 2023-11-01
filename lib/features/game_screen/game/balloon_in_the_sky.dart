@@ -6,6 +6,7 @@ import 'package:flame/game.dart';
 
 class BalloonInTheSky extends FlameGame {
   int totalPoint = 0;
+  int blueBalloon = 0;
 
   @override
   Future<void> onLoad() async {
@@ -35,7 +36,7 @@ class BalloonInTheSky extends FlameGame {
         BalloonColor.redBalloon,
         BalloonColor.whiteBalloon
       ];
-      await Future.delayed(Duration(seconds: Random().nextInt(5)));
+      await Future.delayed(Duration(seconds: Random().nextInt(2)));
       int index = Random().nextInt(3);
       double positionX = Random().nextDouble() * size.x;
       double speed = Random().nextDouble() * 10.0 + 2.0;
