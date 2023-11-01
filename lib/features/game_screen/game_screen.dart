@@ -36,7 +36,7 @@ class GameScreen extends StatelessWidget {
             );
           },
           HomeButton.id: (context, BalloonInTheSky gameRef) {
-            return const HomeButton();
+            return HomeButton(gameRef: gameRef);
           }
         },
       ),

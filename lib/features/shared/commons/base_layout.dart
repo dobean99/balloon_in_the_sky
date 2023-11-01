@@ -1,7 +1,6 @@
 import 'package:balloon_in_the_sky/config/assets/assets.dart';
 import 'package:balloon_in_the_sky/config/l10n/l10n.dart';
 import 'package:balloon_in_the_sky/core/constants/app_colors.dart';
-import 'package:balloon_in_the_sky/features/menu_screen/menu_screen.dart';
 import 'package:balloon_in_the_sky/features/shared/commons/gradient_stroke_text.dart';
 import 'package:balloon_in_the_sky/features/shared/commons/rounded_gradient_stroke_button.dart';
 import 'package:balloon_in_the_sky/features/theme_screen/theme_provider.dart';

@@ -7,6 +7,8 @@ import 'package:flame/game.dart';
 class BalloonInTheSky extends FlameGame {
   int totalPoint = 0;
   int blueBalloon = 0;
+  int redBalloon = 0;
+  int whiteBalloon = 0;
 
   @override
   Future<void> onLoad() async {

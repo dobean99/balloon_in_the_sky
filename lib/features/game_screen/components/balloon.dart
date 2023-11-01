@@ -69,17 +69,16 @@ class Balloon extends SpriteComponent
   void getScore(BalloonColor balloonColor) {
     switch (balloonColor) {
       case BalloonColor.blueBalloon:
-        gameRef.blueBalloon + 1;
-        int blueBalloon = gameRef.blueBalloon + 1;
-        prefs.setInt(AppConstants.blueBalloon, blueBalloon);
+        gameRef.blueBalloon += 1;
+        prefs.setInt(AppConstants.blueBalloon, gameRef.blueBalloon);
         break;
       case BalloonColor.redBalloon:
-        int redBalloon = prefs.getInt(AppConstants.redBalloon) ?? 0 + 1;
-        prefs.setInt(AppConstants.redBalloon, redBalloon);
+        gameRef.redBalloon += 1;
+        prefs.setInt(AppConstants.redBalloon, gameRef.redBalloon);
         break;
       case BalloonColor.whiteBalloon:
-        int whiteBalloon = prefs.getInt(AppConstants.whiteBalloon) ?? 0 + 1;
-        prefs.setInt(AppConstants.whiteBalloon, whiteBalloon);
+        gameRef.whiteBalloon += 1;
+        prefs.setInt(AppConstants.whiteBalloon, gameRef.whiteBalloon);
         break;
     }
   }
