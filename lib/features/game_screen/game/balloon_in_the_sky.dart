@@ -40,9 +40,9 @@ class BalloonInTheSky extends FlameGame {
         BalloonColor.redBalloon,
         BalloonColor.whiteBalloon
       ];
-      await Future.delayed(Duration(seconds: Random().nextInt(2)));
+      await Future.delayed(const Duration(milliseconds: 500));
       int index = Random().nextInt(3);
-      double speed = Random().nextDouble() * 10.0 + 2.0;
+      double speed = Random().nextDouble() * 5.0 + 2.0;
       addBalloon(balloonReference[index], speed);
     }
   }

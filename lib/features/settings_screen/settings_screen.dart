@@ -143,7 +143,7 @@ class SettingsScreen extends StatelessWidget {
                                 builder: (context, provider, snapshot) {
                               var lang = provider.locale;
                               return RoundedGradientStrokeButton(
-                                width: 150,
+                                width: 170,
                                 onPressed: () {
                                   Locale locale = _changeLanguage(lang);
                                   context
