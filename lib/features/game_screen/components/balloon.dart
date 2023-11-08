@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:balloon_in_the_sky/config/config.dart';
 import 'package:balloon_in_the_sky/core/constants/app_constants.dart';
 import 'package:balloon_in_the_sky/features/game_screen/components/balloon_burst.dart';
@@ -27,6 +28,11 @@ class Balloon extends SpriteComponent
   @override
   Future<void> onLoad() async {
     sprite = await Sprite.load(getBalloonColor(balloonColor));
+    double positionX =
+        Random().nextDouble() * (game.size.x - (size.x / 2)) + (size.x / 2);
+    Vector2 newPosition = Vector2(positionX, game.size.y);
+    position = newPosition;
+    anchor = Anchor.center;
     prefs = await SharedPreferences.getInstance();
   }
 
