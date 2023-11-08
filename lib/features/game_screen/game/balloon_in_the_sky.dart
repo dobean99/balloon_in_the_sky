@@ -21,13 +21,11 @@ class BalloonInTheSky extends FlameGame {
     overlays.add(HomeButton.id);
   }
 
-  void addBalloon(
-      BalloonColor balloonColor, double positionX, double speed) async {
+  void addBalloon(BalloonColor balloonColor, double speed) async {
     double randomScale = Random().nextDouble() * 0.5 + 0.5;
     final scale = Vector2(randomScale, randomScale);
     final component =
         Balloon(speed: speed, balloonSize: scale, balloonColor: balloonColor);
-    component.position = Vector2(positionX, size.y);
     await add(component);
   }
 
@@ -40,9 +38,8 @@ class BalloonInTheSky extends FlameGame {
       ];
       await Future.delayed(Duration(seconds: Random().nextInt(2)));
       int index = Random().nextInt(3);
-      double positionX = Random().nextDouble() * size.x;
       double speed = Random().nextDouble() * 10.0 + 2.0;
-      addBalloon(balloonReference[index], positionX, speed);
+      addBalloon(balloonReference[index], speed);
     }
   }
 
