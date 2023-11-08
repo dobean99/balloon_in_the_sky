@@ -1,11 +1,9 @@
 import 'dart:math';
 import 'package:balloon_in_the_sky/config/config.dart';
-import 'package:balloon_in_the_sky/core/constants/app_constants.dart';
 import 'package:balloon_in_the_sky/features/game_screen/components/balloon_burst.dart';
 import 'package:balloon_in_the_sky/features/game_screen/game/balloon_in_the_sky.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vibration/vibration.dart';
 
 enum BalloonColor {
@@ -19,7 +17,6 @@ class Balloon extends SpriteComponent
   final double speed;
   final Vector2 balloonSize;
   final BalloonColor balloonColor;
-  late final SharedPreferences prefs;
   Balloon(
       {required this.speed,
       required this.balloonSize,
@@ -33,7 +30,6 @@ class Balloon extends SpriteComponent
     Vector2 newPosition = Vector2(positionX, game.size.y);
     position = newPosition;
     anchor = Anchor.center;
-    prefs = await SharedPreferences.getInstance();
   }
 
   @override
@@ -76,15 +72,12 @@ class Balloon extends SpriteComponent
     switch (balloonColor) {
       case BalloonColor.blueBalloon:
         gameRef.blueBalloon += 1;
-        prefs.setInt(AppConstants.blueBalloon, gameRef.blueBalloon);
         break;
       case BalloonColor.redBalloon:
         gameRef.redBalloon += 1;
-        prefs.setInt(AppConstants.redBalloon, gameRef.redBalloon);
         break;
       case BalloonColor.whiteBalloon:
         gameRef.whiteBalloon += 1;
-        prefs.setInt(AppConstants.whiteBalloon, gameRef.whiteBalloon);
         break;
     }
   }

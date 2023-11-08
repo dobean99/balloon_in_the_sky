@@ -1,14 +1,17 @@
 import 'dart:math';
+import 'package:balloon_in_the_sky/core/constants/app_constants.dart';
 import 'package:balloon_in_the_sky/features/game_screen/components/balloon.dart';
 import 'package:balloon_in_the_sky/features/game_screen/overlays/home_button.dart';
 import 'package:balloon_in_the_sky/features/game_screen/overlays/score.dart';
 import 'package:flame/game.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class BalloonInTheSky extends FlameGame {
   int totalPoint = 0;
   int blueBalloon = 0;
   int redBalloon = 0;
   int whiteBalloon = 0;
+  late final SharedPreferences prefs;
 
   @override
   Future<void> onLoad() async {
@@ -19,6 +22,7 @@ class BalloonInTheSky extends FlameGame {
     spawnBalloon();
     overlays.add(Score.id);
     overlays.add(HomeButton.id);
+    prefs = await SharedPreferences.getInstance();
   }
 
   void addBalloon(BalloonColor balloonColor, double speed) async {
@@ -50,5 +54,19 @@ class BalloonInTheSky extends FlameGame {
       overlays.add(Score.id);
     }
     super.update(dt);
+  }
+
+  @override
+  void onDispose() {
+    int red = prefs.getInt(AppConstants.redBalloon) ?? 0;
+    prefs.setInt(AppConstants.redBalloon, red + redBalloon);
+
+    int blue = prefs.getInt(AppConstants.blueBalloon) ?? 0;
+    prefs.setInt(AppConstants.blueBalloon, blue + blueBalloon);
+
+    int white = prefs.getInt(AppConstants.whiteBalloon) ?? 0;
+    prefs.setInt(AppConstants.whiteBalloon, white + whiteBalloon);
+
+    super.onDispose();
   }
 }
