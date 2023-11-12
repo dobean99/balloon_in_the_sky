@@ -2,8 +2,10 @@ import 'dart:math';
 import 'package:balloon_in_the_sky/config/config.dart';
 import 'package:balloon_in_the_sky/features/game_screen/components/balloon_burst.dart';
 import 'package:balloon_in_the_sky/features/game_screen/game/balloon_in_the_sky.dart';
+import 'package:balloon_in_the_sky/features/settings_screen/providers/vibration_provider.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
+import 'package:provider/provider.dart';
 import 'package:vibration/vibration.dart';
 
 enum BalloonColor {
@@ -50,7 +52,12 @@ class Balloon extends SpriteComponent
       gameRef.add(balloonBurst);
       gameRef.totalPoint += 1;
       getScore(balloonColor);
-      Vibration.vibrate();
+      if (game.buildContext != null) {
+        if (Provider.of<VibrationProvider>(game.buildContext!, listen: false)
+            .isVibrationOn) {
+          Vibration.vibrate();
+        }
+      }
       await Future.delayed(const Duration(milliseconds: 100));
       gameRef.remove(balloonBurst);
     }
